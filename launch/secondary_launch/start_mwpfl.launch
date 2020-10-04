@@ -17,7 +17,7 @@
     <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_address)" output="screen">
     </node>
 
-    <!-- AMCL -->
+    <!-- MWPFL -->
     <node pkg="mwpfl" type="mwpfl" name="mwpfl" output="screen">
         <remap from="scan" to="$(arg scan_topic)" />
         <remap from="initialpose" to="initialpose" />
