@@ -11,7 +11,10 @@
 
     <node pkg="tf" type="static_transform_publisher" name="ROSbot2_laser" args="0 0 0 3.14 0 0 base_link laser 10" />
 
-    
+    <!-- actual rosbot sensor -->
+    <include file="$(find rosbot_ekf)/launch/all.launch"/>
+    <include file="$(find rplidar_ros)/launch/rplidar.launch"/>
+
     <!-- mapping node-->
     <group unless="$(arg cartographer)">
     <include file="$(find mowito_rosbot)/launch/secondary_launch/start_mw_mapping.launch">

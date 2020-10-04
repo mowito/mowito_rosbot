@@ -5,6 +5,9 @@
     <arg name="cartographer" default="false" />
     <arg name="carto_map" default="$(find mowito_rosbot)/samples/maps/carto_map.pbstream" />
 
+    <!-- actual rosbot sensors -->
+    <include file="$(find rosbot_ekf)/launch/all.launch"/>
+    <include file="$(find rplidar_ros)/launch/rplidar.launch"/>
 
     <!-- localization node-->
     <group unless="$(arg cartographer)">
