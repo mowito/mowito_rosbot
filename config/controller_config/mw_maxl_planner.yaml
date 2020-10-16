@@ -12,7 +12,7 @@ mw_maxl_planner:
 
 
   lookahead_goal_on_path: true
-  min_lookahead: 0.2 #1.5
+  min_lookahead: 1 # 0.2 #1.5
   max_lookahead: 1.5 # 3
   closest_point_index_search: 10
   max_y_deviation: 1.0
@@ -23,16 +23,25 @@ mw_maxl_planner:
   lookahead_point_distance: 0.1 
 
   # vehicle dimension for ROSbot
-  vehicleLength: 0.3    
-  vehicleWidth: 0.2     
+  vehicleLength: 0.01 # 0.23    
+  vehicleWidth: 0.01 #0.2     
+  
   sensorOffsetX: 0.1    # not having effect
   sensorOffsetY: 0      # not having effect
 
-  maxSpeed: 0.6 # 0.4
-  maxAccel: 1.5 # 1.0 #0.5
+  maxSpeed: 0.6 # 0.6 # 0.4
+  maxAccel: 0.5 # 1.0 #0.5
 
-  direction_weight: 0.16    # 0.08 #0.02        # weight to change in direction
-  direction_threshold: 120      # in degrees
+  yaw_gain: 2.5       # yaw gain used when robot is in motion
+  stop_yaw_gain: 0.6  # yaw gain used when robot is stopped/almost stopped
+  max_yaw_rate: 0.5   # maximum yaw rate for the robot
+  
+  direction_weight: 0.2 # 0.02        # weight to change in direction
+  direction_threshold: 90 # 120      # in degrees
 
-  #high accuracy multiplier for reaching the goal. Takes a value between (0, 1]
-  high_accuracy_multiplier: 0.5
+  # for obstacle inflation
+  x_inflate: 0 #0.16 # +- x_inflate /2 meters in x-direction of path frame
+  y_inflate: 0 #0.80 #+- y_inflate / 2 meters in y-direction of path frame
+
+  #enable visualisation of detailed data (pointcloud data)
+  vis_pointcloud: true
