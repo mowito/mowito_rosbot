@@ -16,7 +16,11 @@ min_angular_tolerance: 0.15
 controller_reset_timeout: 20.0
 # recovery timeouts
 recoveries:
-  clear_costmap: 5.0
-  rotate: 5.0
-  back_up: 7.0
-  stepback_and_steerturn: 10.0
+  clear_costmap: 10.0
+  rotate: 10.0
+  back_up: 15.0
+  stepback_and_steerturn: 20.0
+
+# should goals be added in a queue (true), 
+# or should new goal replace the old goal (false) 
+goal_queue_mode: false
