@@ -12,8 +12,8 @@ mw_maxl_planner:
 
 
   lookahead_goal_on_path: true
-  min_lookahead: 0.7 # 0.7 # 0.2 #1.5
-  max_lookahead: 1.5 # 1.5 # 3
+  min_lookahead: 0.2 # 0.7 # 0.2 #1.5
+  max_lookahead: 0.7 # 1.5 # 3
   closest_point_index_search: 10
   max_y_deviation: 1.0
   min_radius: 0.1
@@ -54,7 +54,7 @@ mw_maxl_planner:
   # use it based on the rooms you are operating in
   # adjacent range should be more than min path range
   adjacent_range: 0.7 # 0.7 #1 # 3.5 
-  min_path_range: 0.5 # 1
+  min_path_range: 0.3 # 1
 
 
   # scales the paths and distances. low pathScale means path elongation and vice-versa.
