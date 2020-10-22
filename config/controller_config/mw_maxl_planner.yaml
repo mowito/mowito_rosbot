@@ -12,8 +12,8 @@ mw_maxl_planner:
 
 
   lookahead_goal_on_path: true
-  min_lookahead: 0.2 # 0.7 # 0.2 #1.5
-  max_lookahead: 0.7 # 1.5 # 3
+  min_lookahead: 0.7 # 0.7 # 0.2 #1.5
+  max_lookahead: 1.5 # 0.7 # 1.5 # 3
   closest_point_index_search: 10
   max_y_deviation: 1.0
   min_radius: 0.1
