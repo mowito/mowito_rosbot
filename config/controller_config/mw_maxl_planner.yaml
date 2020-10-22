@@ -3,7 +3,9 @@ mw_maxl_planner:
   odomTopic: "/odom"
   plot_path: true
 
-  pathFolder: $(find mw_maxl_planner)/paths/rosbot_mprim_07_02
+  # path to motion primitive files. heckout out mw_maxl_planner/paths for more of them
+  pathFolder: $(find mw_maxl_planner)/paths/rosbot_mprim_07_02 
+
   autonomyMode: true
   map_frame: "map"
   robot_frame: "base_link"
