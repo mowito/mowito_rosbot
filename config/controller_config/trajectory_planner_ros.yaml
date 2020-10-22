@@ -41,3 +41,5 @@ trajectory_planner:
   simple_attractor: false
 
   y_vels: [-0.3, -0.1, 0.1, 0.3]
+
+ footprint_model/padding: 0.01
