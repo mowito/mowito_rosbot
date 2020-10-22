@@ -13,7 +13,7 @@ base_frame: base_link
 scan_topic: /scan
 mode: localization #localization
 
-    # if you'd like to start localizing on bringup in a map and pose
+# if you'd like to start localizing on bringup in a map and pose
 map_file_name: rosbot
 map_start_pose: [0, 0, 0.0]
 
