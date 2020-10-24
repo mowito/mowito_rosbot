@@ -4,7 +4,7 @@ mw_maxl_planner:
   plot_path: true
 
   # path to motion primitive files. heckout out mw_maxl_planner/paths for more of them
-  pathFolder: $(find mw_maxl_planner)/paths/rosbot_mprim_07_02 
+  pathFolder: $(find mw_maxl_planner)/paths/rosbot_mprim_1_02 
 
   autonomyMode: true
   map_frame: "map"
@@ -55,7 +55,7 @@ mw_maxl_planner:
   # most probably the obstacle horizon - used for cropping the pointcloud 
   # use it based on the rooms you are operating in
   # adjacent range should be more than min path range
-  adjacent_range: 0.7 # 0.7 #1 # 3.5 
+  obstacle_horizon: 1.5 # 0.7 #1 # 3.5 
   min_path_range: 0.3 # 1
 
 
