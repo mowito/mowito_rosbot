@@ -50,17 +50,15 @@ mw_maxl_planner:
   #enable visualisation of detailed data (pointcloud data)
   vis_pointcloud: true
 
-  # most probably the obstacle horizon - used for cropping the pointcloud 
+  # the obstacle horizon - 
   # use it based on the rooms you are operating in
-  # adjacent range should be more than min path range
-  adjacent_range: 0.7 # 0.7 #1 # 3.5 
+  # obstacle_horizon should be more than min path range
+  obstacle_horizon: 0.7 # 0.7 #1 # 3.5 
   min_path_range: 0.3 # 1
 
 
   # scales the paths and distances. low pathScale means path elongation and vice-versa.
-  # for particular local goal, pathScale starts with initial value, finds a ptha, 
-  # then value of path scale is decreased find a longer solution path. till it hits th minPathScale.
- 
+
   initial_path_scale: 1.0 # 1.0
   min_path_scale: 0.10 # 0.75
   path_scale_step: 0.1 #0.25
