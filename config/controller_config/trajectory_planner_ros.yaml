@@ -42,4 +42,3 @@ trajectory_planner:
 
   y_vels: [-0.3, -0.1, 0.1, 0.3]
 
- footprint_model/padding: 0.01
