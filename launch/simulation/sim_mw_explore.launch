@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<!-- launches rosbot sim -->
+<!-- launches exploration through autonomous goal selection -->
+<launch>
+  <arg name="scan_topic" default="/scan"/>
+  <arg name="laser_frame" default="laser"/>
+  <arg name="odom_frame" default="odom"/>
+  <arg name="base_frame" default="base_link"/>
+  <arg name="map_frame" default="map"/>
+
+  <arg name="debug" default="false"/>
+  <arg name="respawn" default="false"/>
+
+  <arg name="world_name" default="mowito"/>
+  <arg name="gui" default="true"/>
+
+  <!-- SIMULATION -->
+  <!-- rosbot and the rviz-->
+  <include file="$(find rosbot_description)/launch/rosbot_rviz.launch">
+      <arg name="rviz_file" value="rosbot.rviz"/>
+  </include>
+
+  <!-- the world -->
+  <include file="$(find rosbot_gazebo)/launch/rosbot_world.launch">
+      <arg name="world" value="$(find rosbot_gazebo)/worlds/$(arg world_name).world"/>
+      <arg name="gui" value="$(arg gui)"/>
+  </include>
+
+  <!-- -for converting the odom msg to tf -->
+  <node pkg="utils" type="msg_to_tf" name="msg_to_tf">
+      <param name="odometry_topic" value="/odom"/>
+  </node>
+
+  <!-- mapping -->
+  <include file="$(find mw_run)/launch/start_mw_mapping.launch">
+    <arg name="scan_topic" value="$(arg scan_topic)"/>
+    <arg name="laser_frame" value="$(arg laser_frame)"/>
+    <arg name="odom_frame" value="$(arg odom_frame)"/>
+    <arg name="base_frame" value="$(arg base_frame)"/>
+    <arg name="map_frame" value="$(arg map_frame)"/>
+  </include>
+
+  <!-- nav server -->
+  <include file="$(find mowito_rosbot)/launch/secondary_launch/start_nav_server.launch">
+      <arg name="mission_executive_config" value="$(find mowito_rosbot)/config/mission_executive_config/mission_executive_params.yaml"/>
+      <arg name="respawn" value="$(arg respawn)"/>
+      <arg name="gp_debug" value="$(arg debug)"/>
+      <arg name="ctrl_debug" value="$(arg debug)"/> 
+      <arg name="rcvr_debug" value="$(arg debug)"/>  
+  </include>
+
+  <include file="$(find map_exploration)/launch/explore.launch">
+    <arg name="debug" value="$(arg debug)"/>
+  </include>
+
+</launch>
