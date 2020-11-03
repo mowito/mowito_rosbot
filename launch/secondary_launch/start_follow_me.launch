@@ -1,0 +1,37 @@
+<launch>
+    <!--Tracker sim params-->
+    <!-- To control the rate at which the tracker node will publish its goals -->
+    <arg name="loop_rate_value" default="10"/> 
+    <!--The topic name at which the keyboard_telelop node publishes its tracker velocities -->
+    <!-- <arg name="teleop_publish_topic" default="/tracker/cmd_vel"/> -->
+    <!--The topic name at which the tracker_sim_node subscribes to the trakcer velocities published by the keyboard_teleop node -->   
+    <!-- <arg name="teleop_sub_topic" default="/tracker/cmd_vel"/>  -->
+    <!--The topic name at which the tracker_sim_node publishes its goals -->
+    <arg name="tracker_pose_topic" default="/move_base_simple/goal"/> 
+    
+    <!--dol Params-->
+    <arg name="dol_loop_rate_value" default="10"/>
+    <arg name="dol_goal_dist_tolerance" default = "0.1"/> <!-- in meters -->
+
+
+    <node pkg="mw_maxl_planner" name="mw_maxl_dol_node" type="mw_maxl_dol_node" output="screen">
+        <rosparam command="load" file="$(find mowito_rosbot)/config/controller_config/mw_maxl_planner.yaml" subst_value="true"/>
+        <param name="mobileGoalTopic" value="$(arg tracker_pose_topic)"/>
+        <param name="mw_maxl_planner/lookahead_goal_on_path" value="false"/>
+        <param name="dist_tolerance" value="$(arg dol_goal_dist_tolerance)"/> 
+        <param name="loop_rate_value" value="$(arg dol_loop_rate_value)"/>
+    </node>
+
+    <!--Follow me goal pub -->
+      <!--NOTE: The tracker_pose_topic and the tracker_position_topic should be the same-->
+    <!--
+    <node name="goal_pub_node" type="goal_pub_node" pkg="follow_me_goal_pub" output="screen">
+      <param name= "goal_sim_loop_rate_value" value= "$(arg loop_rate_value)" />
+      <param name= "tracker_position_topic" value= "$(arg tracker_pose_topic)" /> 
+      <param name= "goal_pub_topic" value= "$(arg goal_pub_topic)" />
+      <param name= "distance_from_tracker" value= "$(arg distance_from_tracker)" />
+      <param name= "mission_status_topic" value= "$(arg mission_status_topic)" />
+      <param name= "tracker_goal_tolerance" value= "$(arg tracker_goal_tolerance)" />
+    </node>
+    -->
+</launch>
