@@ -4,7 +4,7 @@ mw_maxl_planner:
   plot_path: true
 
   # path to motion primitive files. checkout out mw_maxl_planner/paths for more of them
-  pathFolder: $(find mw_maxl_planner)/paths/rosbot_mprim_1_02 
+  pathFolder: $(find mw_maxl_planner)/paths/mw_mprims_0x5_0x2
 
   autonomyMode: true
   map_frame: "map"
@@ -31,7 +31,7 @@ mw_maxl_planner:
   sensorOffsetX: 0.1    # not having effect
   sensorOffsetY: 0      # not having effect
 
-  maxSpeed: 0.3 # 0.6 # 0.4
+  maxSpeed: 0.6 # 0.3 # 0.6 # 0.4
   maxAccel: 10.0 #0.5 # 1.0 #0.5
 
   yaw_gain: 2.5       # yaw gain used when robot is in motion
