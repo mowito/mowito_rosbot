@@ -4,7 +4,7 @@ mw_maxl_planner:
   plot_path: true
 
   # path to motion primitive files. checkout out mw_maxl_planner/paths for more of them
-  pathFolder: $(find mw_mprims)/paths/mw_mprims_0x5_0x2
+  pathFolder: $(find mw_mprims)/paths/mw_mprims_0x7_0x2
 
   autonomyMode: true
   map_frame: "map"
