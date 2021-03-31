@@ -4,7 +4,7 @@ mw_maxl_planner:
   plot_path: true
 
   # path to motion primitive files. checkout out mw_maxl_planner/paths for more of them
-  pathFolder: $(find mw_mprims)/paths/mw_mprims_0x7_0x2
+  pathFolder: $(find mw_mprims)/paths/mw_mprims_0x7_0x45
 
   autonomyMode: true
   map_frame: "map"
@@ -14,8 +14,8 @@ mw_maxl_planner:
 
 
   lookahead_goal_on_path: true
-  min_lookahead: 0.7 # 0.7 # 0.2 #1.5
-  max_lookahead: 1.5 # 0.7 # 1.5 # 3
+  min_lookahead: 0.4 # 0.7 # 0.2 #1.5
+  max_lookahead: 1 # 0.7 # 1.5 # 3
   closest_point_index_search: 10
   max_y_deviation: 1.0
   min_radius: 0.1
@@ -35,7 +35,7 @@ mw_maxl_planner:
   maxAccel: 10.0 #0.5 # 1.0 #0.5
 
   yaw_gain: 2.5       # yaw gain used when robot is in motion
-  stop_yaw_gain: 0.6  # yaw gain used when robot is stopped/almost stopped
+  stop_yaw_gain: 1  #0.6  # yaw gain used when robot is stopped/almost stopped
   max_yaw_rate: 2.5 #0.5   # maximum yaw rate for the robot
   
   direction_weight: 0.2 # 0.02        # weight to change in direction
@@ -64,3 +64,5 @@ mw_maxl_planner:
   initial_path_scale: 1.0 # 1.0
   min_path_scale: 0.10 # 0.75
   path_scale_step: 0.1 #0.25
+
+  use_odom_velocity: false  # parameter to take velocity from odom messages
