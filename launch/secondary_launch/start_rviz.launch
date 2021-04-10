@@ -1,4 +1,8 @@
+<?xml version="1.0"?>
+<!-- launches rosbot in rviz -->
 <launch>
-	<arg name="rviz_file" default="default.rviz"/>
-	<node name="rviz" pkg="rviz" type="rviz" args="-d $(find mowito_rosbot)/launch/$(arg rviz_file)"/>
+	<arg name="rviz_file" default="rosbot.rviz"/>
+	<!-- Show in Rviz   -->
+	<node name="rviz" pkg="rviz" type="rviz" args="-d $(find mowito_rosbot)/rviz/$(arg rviz_file)" output="screen"/>
+
 </launch>

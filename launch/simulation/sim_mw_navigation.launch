@@ -6,12 +6,17 @@
     <arg name="gui" default="true"/>
     <arg name="cartographer" default="false" />
     <arg name="carto_map" default="$(find mowito_rosbot)/samples/maps/carto_map.pbstream" />
-
+    <!-- rviz config file for visualization -->
+    <arg name="rviz_file" default="rosbot.rviz"/>
 
     <!-- SIMULATION -->
     <!-- rosbot and the rviz-->
-    <include file="$(find rosbot_description)/launch/rosbot_rviz.launch">
-        <arg name="rviz_file" value="rosbot.rviz"/>
+    <include file="$(find rosbot_description)/launch/rosbot_gazebo.launch" />
+
+    <param name="robot_description" command="$(find xacro)/xacro '$(find rosbot_description)/urdf/rosbot.xacro'"/>
+
+    <include file="$(find mowito_rosbot)/launch/secondary_launch/start_rviz.launch">
+        <arg name="rviz_file" value="$(arg rviz_file)"/>
     </include>
 
     <!-- the world -->
