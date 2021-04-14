@@ -1,5 +1,5 @@
 <launch>
-    <arg name="map_path" default="$(find mw_mapping)/maps/mowito_map.yaml"/>
+    <arg name="map_name" default="mowito_map"/>
     <arg name="respawn" default="true"/>
     <arg name="debug" default="false"/>
     <arg name="world_name" default="mowito"/>
@@ -21,7 +21,7 @@
 
     <!-- the world -->
     <include file="$(find rosbot_gazebo)/launch/rosbot_world.launch">
-        <arg name="world" value="$(find rosbot_gazebo)/worlds/$(arg world_name).world"/>
+        <arg name="world" value="$(find mowito_rosbot)/samples/worlds/$(arg world_name).world"/>
         <arg name="gui" value="$(arg gui)"/>
     </include>
 
@@ -29,7 +29,7 @@
     <!-- localization node-->
     <group unless="$(arg cartographer)">
     <include file="$(find mowito_rosbot)/launch/secondary_launch/start_mwpfl.launch">
-        <arg name="map_address" value="$(arg map_path)"/>
+        <arg name="map_address" value="$(find mowito_rosbot)/samples/maps/$(arg map_name).yaml"/>
         <arg name="robot_init_x" value="0"/>
         <arg name="robot_init_y" value="0"/>
         <arg name="robot_init_phi" value="0"/>
