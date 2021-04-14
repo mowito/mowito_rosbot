@@ -6,7 +6,7 @@
     <arg name="base_frame" default="base_link" />
     <arg name="map_frame" default="map" />
     <arg name="cartographer" default="false" />
-    <arg name="world_name" default="elevator_room"/>
+    <arg name="world_name" default="mowito"/>
     <arg name="gui" default="true"/>
 
     
@@ -19,7 +19,7 @@
     </include>
     <!-- the world -->
     <include file="$(find rosbot_gazebo)/launch/rosbot_world.launch">
-        <arg name="world" value="$(find rosbot_gazebo)/worlds/$(arg world_name).world"/>
+        <arg name="world" value="$(find mowito_rosbot)/samples/worlds/$(arg world_name).world"/>
         <arg name="gui" value="$(arg gui)"/>
     </include>
 
