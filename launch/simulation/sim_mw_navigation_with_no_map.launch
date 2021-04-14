@@ -9,7 +9,7 @@
     <arg name="respawn" default="true"/>
     <arg name="debug" default="false"/>
 
-    <arg name="world_name" default="mowito"/>
+    <arg name="world_name" default="elevator_room"/>
     <arg name="gui" default="true"/>
 
 

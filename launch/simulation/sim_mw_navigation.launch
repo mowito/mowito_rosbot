@@ -1,8 +1,8 @@
 <launch>
-    <arg name="map_path" default="$(find mw_mapping)/maps/mowito_map.yaml"/>
+    <arg name="map_path" default="$(find mowito_rosbot)/samples/maps/elevator_room.yaml"/>
     <arg name="respawn" default="true"/>
     <arg name="debug" default="false"/>
-    <arg name="world_name" default="mowito"/>
+    <arg name="world_name" default="elevator_room"/>
     <arg name="gui" default="true"/>
     <arg name="cartographer" default="false" />
     <arg name="carto_map" default="$(find mowito_rosbot)/samples/maps/carto_map.pbstream" />
