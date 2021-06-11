@@ -1,0 +1,25 @@
+<launch>
+    <arg name="base_frame" default="base_link" />
+    <arg name="scan_topic" default="/scan" /> 
+    <arg name="localization" default="false"/>
+    <arg name="map_file_name" default="slam_map"/>
+    <arg name="map_start_pose" default="[0.0, 0.0, 0.0]"/>
+
+    <group unless="$(arg localization)">
+    <node pkg="slam_toolbox" type="async_slam_toolbox_node" name="slam_toolbox" output="screen">
+        <param name="base_frame" value="$(arg base_frame)"/>
+        <param name="scan_topic" value="$(arg scan_topic)"/>
+        <rosparam command="load" file="$(find mowito_rosbot)/config/slam_toolbox_config/slam_toolbox_mapping.yaml" />
+    </node>
+    </group>
+
+    <group if="$(arg localization)">
+    <node pkg="slam_toolbox" type="localization_slam_toolbox_node" name="slam_toolbox" output="screen">
+        <param name="base_frame" value="$(arg base_frame)"/>
+        <param name="scan_topic" value="$(arg scan_topic)"/>
+        <param name="map_file_name" value ="$(find mowito_rosbot)/samples/maps/$(arg map_file_name)"/>
+        <rosparam param="map_start_pose" subst_value="True">$(arg map_start_pose)</rosparam>
+        <rosparam command="load" file="$(find mowito_rosbot)/config/slam_toolbox_config/slam_toolbox_localization.yaml"/>
+    </node>
+    </group>
+</launch>
