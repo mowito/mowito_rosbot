@@ -19,9 +19,12 @@
     
     <!-- mwpfl and cartographer params -->
     <arg name="map_path" default="$(find mw_mapping)/maps/mowito_map.yaml"/>
-    <arg name="cartographer" default="false" />
-    <arg name="carto_map" default="$(find mowito_rosbot)/samples/maps/carto_map.pbstream" />
-
+    <arg name="slam_toolbox" default="false" />
+    <arg name="map_file_name" default="slam_map"/>
+    <arg name="map_start_pose" default="[0.0, 0.0, 0.0]"/>
+    <arg name ="localization" default="true"/>
+    <arg name="scan_topic" default="/scan" /> 
+    <arg name="base_frame" default="base_link" />
 
     <!-- =============== SIMULATION =============== -->
 
@@ -38,7 +41,7 @@
 
     <!-- mapping and localization -->
     <!-- MWPFL-->
-    <group unless="$(arg cartographer)">
+    <group unless="$(arg slam_toolbox">
       <include file="$(find mowito_rosbot)/launch/secondary_launch/start_mwpfl.launch">
           <arg name="map_address" value="$(arg map_path)"/>
           <arg name="robot_init_x" value="0"/>
@@ -49,16 +52,14 @@
     </group>
 
     <!-- Cartographer-->
-    <group if="$(arg cartographer)">
-      <node name="cartographer_node" pkg="cartographer_ros"
-        type="cartographer_node" args="
-            -configuration_directory $(find mowito_rosbot)/config/carto_config
-            -configuration_basename rosbot_localization.lua
-      -load_state_filename $(arg carto_map)"
-        output="screen">
-      </node>  
-      <node name="cartographer_occupancy_grid_node" pkg="cartographer_ros"
-        type="cartographer_occupancy_grid_node" args="-resolution 0.05" />
+    <group if="$(arg slam_toolbox">
+    <include file="$(find mowito_rosbot)/launch/secondary_launch/start_slam_toolbox.launch">
+        <arg name="base_frame" default="$(arg base_frame)" />
+        <arg name="scan_topic" value="$(arg scan_topic)" />
+        <arg name="localization" value="$(arg localization)"/>
+        <arg name="map_file_name" value="$(arg map_file_name)"/>
+        <arg name="map_start_pose" default="$(arg map_start_pose)"/>
+    </include>
     </group>
 
 
